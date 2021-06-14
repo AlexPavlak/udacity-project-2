@@ -31,7 +31,4 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
 Follow the process described in the course to `eb init` a new application and `eb create` a new environment to deploy your image-filter service! Don't forget you can use `eb deploy` to push changes.
 
-### Endpoint URL
 
-[Link to endpoint base](udagram-apavlak-dev.us-east-2.elasticbeanstalk.com)
-[Filtered cat image](udagram-apavlak-dev.us-east-2.elasticbeanstalk.com/filteredimage?image_url=https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg)
