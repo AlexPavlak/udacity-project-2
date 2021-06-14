@@ -1,0 +1,161 @@
+usage: eb (sub-commands ...) [options ...] {arguments ...}
+
+Welcome to the Elastic Beanstalk Command Line Interface (EB CLI).
+For more information on a specific command, type "eb {cmd} --help".
+
+commands:
+  abort        Cancels an environment update or deployment.
+  appversion   Listing and managing application versions
+  clone        Clones an environment.
+  codesource   Configures the code source for the EB CLI to use by default.
+  config       Modify an environment's configuration. Use subcommands to manage saved configurations.
+  console      Opens the environment in the AWS Elastic Beanstalk Management Console.
+  create       Creates a new environment.
+  deploy       Deploys your source code to the environment.
+  events       Gets recent events.
+  health       Shows detailed environment health.
+  init         Initializes your directory with the EB CLI. Creates the application.
+  labs         Extra experimental commands.
+  list         Lists all environments.
+  local        Runs commands on your local machine.
+  logs         Gets recent logs.
+  open         Opens the application URL in a browser.
+  platform     Commands for managing platforms.
+  printenv     Shows the environment variables.
+  restore      Restores a terminated environment.
+  scale        Changes the number of running instances.
+  setenv       Sets environment variables.
+  ssh          Opens the SSH client to connect to an instance.
+  status       Gets environment information and status.
+  swap         Swaps two environment CNAMEs with each other.
+  tags         Allows adding, deleting, updating, and listing of environment tags.
+  terminate    Terminates the environment.
+  upgrade      Updates the environment to the most recent platform version.
+  use          Sets default environment.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --debug               toggle debug output
+  --quiet               suppress all output
+  -v, --verbose         toggle verbose output
+  --profile PROFILE     use a specific profile from your credential file
+  -r REGION, --region REGION
+                        use a specific region
+  --no-verify-ssl       don't verify AWS SSL certificates
+  --version             show application/version info
+
+To get started type "eb init". Then type "eb create" and "eb open"
+
+(.ebcli-virtual-env) C:\Users\alexp\Desktop\Udacity\Project_2\project\image-filter-starter-code>eb init
+
+Select a default region
+1) us-east-1 : US East (N. Virginia)
+2) us-west-1 : US West (N. California)
+3) us-west-2 : US West (Oregon)
+4) eu-west-1 : EU (Ireland)
+5) eu-central-1 : EU (Frankfurt)
+6) ap-south-1 : Asia Pacific (Mumbai)
+7) ap-southeast-1 : Asia Pacific (Singapore)
+8) ap-southeast-2 : Asia Pacific (Sydney)
+9) ap-northeast-1 : Asia Pacific (Tokyo)
+10) ap-northeast-2 : Asia Pacific (Seoul)
+11) sa-east-1 : South America (Sao Paulo)
+12) cn-north-1 : China (Beijing)
+13) cn-northwest-1 : China (Ningxia)
+14) us-east-2 : US East (Ohio)
+15) ca-central-1 : Canada (Central)
+16) eu-west-2 : EU (London)
+17) eu-west-3 : EU (Paris)
+18) eu-north-1 : EU (Stockholm)
+19) eu-south-1 : EU (Milano)
+20) ap-east-1 : Asia Pacific (Hong Kong)
+21) me-south-1 : Middle East (Bahrain)
+22) af-south-1 : Africa (Cape Town)
+(default is 3): 14
+
+
+Enter Application Name
+(default is "image-filter-starter-code"): udagram-apavlak
+Application udagram-apavlak has been created.
+
+It appears you are using Node.js. Is this correct?
+(Y/n): y
+Select a platform branch.
+1) Node.js 14 running on 64bit Amazon Linux 2
+2) Node.js 12 running on 64bit Amazon Linux 2
+3) Node.js running on 64bit Amazon Linux
+4) Node.js 10 running on 64bit Amazon Linux 2 (Deprecated)
+(default is 1): 1
+
+Do you wish to continue with CodeCommit? (Y/n): n
+Do you want to set up SSH for your instances?
+(Y/n): n
+
+(.ebcli-virtual-env) C:\Users\alexp\Desktop\Udacity\Project_2\project\image-filter-starter-code>npm run build
+
+> udacity-c2-image-filter@1.0.0 build C:\Users\alexp\Desktop\Udacity\Project_2\project\image-filter-starter-code
+> npm run clean && tsc && cp package.json www/package.json && mkdir www/tmp/ && cd www && zip -r Archive.zip . && cd ..
+
+
+> udacity-c2-image-filter@1.0.0 clean C:\Users\alexp\Desktop\Udacity\Project_2\project\image-filter-starter-code
+> rimraf www/ || true
+
+The syntax of the command is incorrect.
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! udacity-c2-image-filter@1.0.0 build: `npm run clean && tsc && cp package.json www/package.json && mkdir www/tmp/ && cd www && zip -r Archive.zip . && cd ..`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the udacity-c2-image-filter@1.0.0 build script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\alexp\AppData\Roaming\npm-cache\_logs\2021-06-14T22_34_42_812Z-debug.log
+
+(.ebcli-virtual-env) C:\Users\alexp\Desktop\Udacity\Project_2\project\image-filter-starter-code>eb create
+Enter Environment Name
+(default is udagram-apavlak-dev):
+Enter DNS CNAME prefix
+(default is udagram-apavlak-dev):
+
+Select a load balancer type
+1) classic
+2) application
+3) network
+(default is 2): 2
+
+
+Would you like to enable Spot Fleet requests for this environment? (y/N): n
+Uploading udagram-apavlak/app-eff6-210614_175435.zip to S3. This may take a while.
+Upload Complete.
+Environment details for: udagram-apavlak-dev
+  Application name: udagram-apavlak
+  Region: us-east-2
+  Deployed Version: app-eff6-210614_175435
+  Environment ID: e-apadi4k4gq
+  Platform: arn:aws:elasticbeanstalk:us-east-2::platform/Node.js 14 running on 64bit Amazon Linux 2/5.4.1
+  Tier: WebServer-Standard-1.0
+  CNAME: udagram-apavlak-dev.us-east-2.elasticbeanstalk.com
+  Updated: 2021-06-14 22:54:27.362000+00:00
+Printing Status:
+2021-06-14 22:54:26    INFO    createEnvironment is starting.
+2021-06-14 22:54:27    INFO    Using elasticbeanstalk-us-east-2-035219612187 as Amazon S3 storage bucket for environment data.
+2021-06-14 22:54:52    INFO    Created target group named: arn:aws:elasticloadbalancing:us-east-2:035219612187:targetgroup/awseb-AWSEB-1GKUFTVCACH6X/bc197bf4156b39bf
+2021-06-14 22:54:52    INFO    Created security group named: sg-0da2963942dd3e628
+2021-06-14 22:55:08    INFO    Created security group named: awseb-e-apadi4k4gq-stack-AWSEBSecurityGroup-K4KEEY4Q7TP2
+2021-06-14 22:55:08    INFO    Created Auto Scaling launch configuration named: awseb-e-apadi4k4gq-stack-AWSEBAutoScalingLaunchConfiguration-REBD55WACMI3
+2021-06-14 22:56:09    INFO    Created Auto Scaling group named: awseb-e-apadi4k4gq-stack-AWSEBAutoScalingGroup-9JKX6N8VVI35
+2021-06-14 22:56:09    INFO    Waiting for EC2 instances to launch. This may take a few minutes.
+2021-06-14 22:56:09    INFO    Created Auto Scaling group policy named: arn:aws:autoscaling:us-east-2:035219612187:scalingPolicy:cc0873f8-183d-4645-b334-b45945135149:autoScalingGroupName/awseb-e-apadi4k4gq-stack-AWSEBAutoScalingGroup-9JKX6N8VVI35:policyName/awseb-e-apadi4k4gq-stack-AWSEBAutoScalingScaleUpPolicy-13KK0UA3OQDJJ
+2021-06-14 22:56:09    INFO    Created Auto Scaling group policy named: arn:aws:autoscaling:us-east-2:035219612187:scalingPolicy:4485c67a-da1d-40af-a466-45525025676c:autoScalingGroupName/awseb-e-apadi4k4gq-stack-AWSEBAutoScalingGroup-9JKX6N8VVI35:policyName/awseb-e-apadi4k4gq-stack-AWSEBAutoScalingScaleDownPolicy-1JP8IKYBOTWI3
+2021-06-14 22:56:25    INFO    Created CloudWatch alarm named: awseb-e-apadi4k4gq-stack-AWSEBCloudwatchAlarmLow-1LVNEPK8UNA2P
+2021-06-14 22:56:25    INFO    Created CloudWatch alarm named: awseb-e-apadi4k4gq-stack-AWSEBCloudwatchAlarmHigh-3H557DHZ39SG
+2021-06-14 22:56:25    INFO    Created load balancer named: arn:aws:elasticloadbalancing:us-east-2:035219612187:loadbalancer/app/awseb-AWSEB-13YQELHQYE2U/b5418c22e1e13d82
+2021-06-14 22:56:26    INFO    Created Load Balancer listener named: arn:aws:elasticloadbalancing:us-east-2:035219612187:listener/app/awseb-AWSEB-13YQELHQYE2U/b5418c22e1e13d82/24f60c7733b8968d
+2021-06-14 22:56:31    INFO    Instance deployment: You didn't specify a Node.js version in the 'package.json' file in your source bundle. The deployment didn't install a specific Node.js version.
+2021-06-14 22:56:45    INFO    Instance deployment completed successfully.
+2021-06-14 22:56:59    INFO    Application available at udagram-apavlak-dev.us-east-2.elasticbeanstalk.com.
+2021-06-14 22:56:59    INFO    Successfully launched environment: udagram-apavlak-dev
+
+
+(.ebcli-virtual-env) C:\Users\alexp\Desktop\Udacity\Project_2\project\image-filter-starter-code>
